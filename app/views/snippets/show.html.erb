@@ -1,0 +1,33 @@
+<p>
+  <strong>French:</strong>
+  <%= @snippet.french %>
+</p>
+ 
+<p>
+  <strong>German:</strong>
+  <%= @snippet.german %>
+</p>
+
+<p>
+  <strong>Time Offset:</strong>
+  <%= @snippet.showTimeOffset %>
+</p>
+
+<%= @snippet.rating_marks.length %>!!!!
+<%= @snippet.ratings.length %>!!!!
+
+<h2>Add a rating</h2>
+<%= form_for([@snippet, @snippet.ratings.build]) do |f| %>
+  <p>
+    <%= f.label :rating_mark_id %><br>
+    <%= f.text_field :rating_mark_id %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+
+
+<%= link_to 'Back', snippets_path %>
+<%= link_to 'Edit', edit_snippet_path(@snippet) %>

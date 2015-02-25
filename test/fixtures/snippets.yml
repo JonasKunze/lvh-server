@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  french: MyText
+  german: MyText
+  showTimeOffset: 1
+
+two:
+  french: MyText
+  german: MyText
+  showTimeOffset: 1

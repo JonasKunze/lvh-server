@@ -1,0 +1,21 @@
+<h1>Listing rating marks</h1>
+<%= link_to 'New rating mark', new_rating_mark_path %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>title</th>
+  </tr>
+ 
+  <% @rating_marks.each do |rating_mark| %>
+    <tr>
+      <td><%= rating_mark.id %></td>
+      <td><%= rating_mark.title %></td>
+      <td><%= link_to 'Show', rating_mark_path(rating_mark) %></td>
+      <td><%= link_to 'Edit', edit_rating_mark_path(rating_mark) %></td>
+      <td><%= link_to 'Destroy', rating_mark_path(rating_mark),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

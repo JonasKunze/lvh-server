@@ -1,0 +1,26 @@
+<h1>Listing snippets</h1>
+<%= link_to 'New snippet', new_snippet_path %>
+<br/>
+<%= link_to 'json', snippets_json_path %>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>French</th>
+    <th>German</th>
+    <th>Offset</th>
+  </tr>
+ 
+  <% @ratings.each do |snippet| %>
+    <tr>
+      <td><%= snippet.id %></td>
+      <td><%= snippet.french %></td>
+      <td><%= snippet.german %></td>
+      <td><%= snippet.showTimeOffset %></td>
+      <td><%= link_to 'Show', snippet_path(snippet) %></td>
+      <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
+      <td><%= link_to 'Destroy', snippet_path(snippet),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

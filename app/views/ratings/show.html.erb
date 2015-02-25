@@ -1,0 +1,17 @@
+<p>
+  <strong>user_id:</strong>
+  <%= @rating.user_id %>
+</p>
+ 
+<p>
+  <strong>rating_mark_id:</strong>
+  <%= @rating.rating_mark_id %>
+</p>
+
+<p>
+  <strong>snippet_id:</strong>
+  <%= @rating.snippet_id %>
+</p>
+
+<%= link_to 'Back', ratings_path %>
+<%= link_to 'Edit', edit_rating_path(@rating) %>

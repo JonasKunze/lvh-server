@@ -1,0 +1,18 @@
+<p>
+  <strong>French:</strong>
+  <%= @snippet.french %>
+</p>
+ 
+<p>
+  <strong>German:</strong>
+  <%= @snippet.german %>
+</p>
+
+<p>
+  <strong>Time Offset:</strong>
+  <%= @snippet.showTimeOffset %>
+</p>
+
+
+<%= link_to 'Back', snippets_path %>
+<%= link_to 'Edit', edit_snippet_path(@snippet) %>

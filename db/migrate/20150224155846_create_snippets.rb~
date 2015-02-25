@@ -1,0 +1,15 @@
+class CreateSnippets < ActiveRecord::Migration
+  def change
+    create_table :snippets do |t|
+      t.text :french
+      t.text :german
+      t.integer :showTimeOffset
+      t.references :rating_mark, index: true
+      t.references :rating, index: true
+
+      t.timestamps null: false
+    end
+	add_foreign_key :snippets, :ratings
+	add_foreign_key :snippets, :rating_marks
+  end
+end
