@@ -1,4 +1,0 @@
-class SnippetsRatingmarks < ActiveRecord::Migration
-  def change
-  end
-end
