@@ -1,3 +1,6 @@
+<h1>Showing Snippet <%= @snippet.id %></h1>
+<%= render 'welcome/menu' %>
+
 <p>
   <strong>French:</strong>
   <%= @snippet.french %>
@@ -10,24 +13,20 @@
 
 <p>
   <strong>Time Offset:</strong>
-  <%= @snippet.showTimeOffset %>
+  <%= @snippet.showTime %>
 </p>
 
-<%= @snippet.rating_marks.length %>!!!!
-<%= @snippet.ratings.length %>!!!!
-
-<h2>Add a rating</h2>
-<%= form_for([@snippet, @snippet.ratings.build]) do |f| %>
-  <p>
-    <%= f.label :rating_mark_id %><br>
-    <%= f.text_field :rating_mark_id %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-
+<h2>Possible ratings</h2>
+  <%= form_for([@snippet, @snippet.ratings.build]) do |f| %>
+    <% @snippet.rating_marks.each do |r| %>
+    <%= f.label r.title  %>
+    <%= f.radio_button "rating_mark_id", r.id  %>
+    <br/>
+      <% end %>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
 
 <%= link_to 'Back', snippets_path %>
 <%= link_to 'Edit', edit_snippet_path(@snippet) %>

@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20150225141445) do
   create_table "snippets", force: :cascade do |t|
     t.text     "french"
     t.text     "german"
-    t.integer  "showTimeOffset"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "showTime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

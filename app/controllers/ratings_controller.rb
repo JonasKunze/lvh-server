@@ -49,7 +49,14 @@ class RatingsController < ApplicationController
       render 'edit'
     end
   end
- 
+  
+  def destroy
+    @rating = Rating.find(params[:id])
+    @rating.destroy
+    
+    redirect_to ratings_path
+  end
+  
   private
     def rating_params
       params.require(:rating).permit(:rating_mark_id, :snippet_id)

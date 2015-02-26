@@ -3,7 +3,7 @@ class CreateSnippets < ActiveRecord::Migration
     create_table :snippets do |t|
       t.text :french
       t.text :german
-      t.integer :showTimeOffset
+      t.integer :showTime
 
       t.timestamps null: false
     end
