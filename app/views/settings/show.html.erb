@@ -1,0 +1,11 @@
+<h1>Showing Setting <%= @setting.id %></h1>
+<%= render 'welcome/menu' %>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @setting.startTime %>
+</p>
+  <%= @setting.updated_at %>
+
+<%= link_to 'Back', settings_path %>
+<%= link_to 'Edit', edit_setting_path(@setting) %>

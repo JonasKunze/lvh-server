@@ -1,0 +1,17 @@
+<h1>Listing snippets</h1>
+<%= render 'welcome/menu' %>
+
+<br/>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Start time</th>
+  </tr>
+ 
+  <tr>
+      <td><%= @setting.id %></td>
+      <td><%= @setting.startTime %></td>
+      <td><%= link_to 'Edit', edit_setting_path(@setting) %></td>
+    </tr>
+
+</table>

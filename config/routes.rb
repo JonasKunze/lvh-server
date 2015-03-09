@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :ratings
   end
 
+  resources :settings
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

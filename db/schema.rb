@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225141445) do
+ActiveRecord::Schema.define(version: 20150309123502) do
 
   create_table "rating_marks", force: :cascade do |t|
     t.string   "title",      null: false
@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 20150225141445) do
   add_index "ratings", ["rating_mark_id"], name: "index_ratings_on_rating_mark_id"
   add_index "ratings", ["snippet_id"], name: "index_ratings_on_snippet_id"
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
+
+  create_table "settings", force: :cascade do |t|
+    t.datetime "startTime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "snippets", force: :cascade do |t|
     t.text     "french"
