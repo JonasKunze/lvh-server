@@ -3,6 +3,6 @@ class Snippet < ActiveRecord::Base
   has_many :ratings
 
   def getNumberOfRatings(ratingMarkID)
-    return Rating.count({snippet_id: id, rating_mark_id: ratingMarkID})
+    return Rating.where({snippet_id: self.id, rating_mark_id: ratingMarkID}).count
   end
 end
