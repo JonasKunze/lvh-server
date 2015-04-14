@@ -23,7 +23,7 @@ class SettingsController < ApplicationController
     end
 
     if success
-      redirect_to @setting
+      redirect_to action: "index"
     else
       render 'edit'
     end
