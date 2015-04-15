@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'stats/json'
   get 'snippets/json'
 
   resources :snippets do

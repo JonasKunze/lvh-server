@@ -1,6 +1,9 @@
 # coding: utf-8
 class SnippetsController < ApplicationController
   def json
+    # Register the session (update activity time)
+    UsersController.updateSession(session)
+    
     jsonMap = {}
     setting=Setting.getSetting()
     startTime=setting.startTime
@@ -23,11 +26,11 @@ class SnippetsController < ApplicationController
           hash[k] = v
         end
       }
-      # Ratings as in "ratings":{"1":{"title":"button1", "count":"0"}{}}
+      
+      # Ratings as in "ratings":{ID:count}
       # here count means the number of users that have hit this button for the current snippet
       hash["ratings"] = {}
       snippet.rating_marks.each{ |ratingMark|
-        #        result = Rating.count({snippet_id: snippet.id, rating_mark_id: ratingMark})
         result = snippet.getNumberOfRatings(ratingMark)
         hash["ratings"][ratingMark.id]=result;
       }

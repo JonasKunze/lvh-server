@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
- def index
+  def index
     @users = User.all
   end
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -10,24 +10,32 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
- 
+
     redirect_to users_path
   end
 
   def self.getSessionUser(session)
     user ||= session[:current_user_id] &&
-                     User.find_by(id: session[:current_user_id])
+    User.find_by(id: session[:current_user_id])
 
     if !user
       user = User.new()
+      user.lastActivityTime = Time.zone.now
       user.save
       session[:current_user_id] = user.id
     end
     user
   end
- 
+
+  def self.updateSession(session)
+    user = getSessionUser(session)
+    user.lastActivityTime = Time.zone.now
+    user.save
+  end
+
   private
-    def user_params
-      params.require(:user).permit(:sessionID)
-    end
+
+  def user_params
+    params.require(:user).permit(:sessionID)
+  end
 end
