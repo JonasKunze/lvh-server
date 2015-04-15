@@ -20,17 +20,18 @@ class UsersController < ApplicationController
 
     if !user
       user = User.new()
-      user.lastActivityTime = Time.zone.now
       user.save
       session[:current_user_id] = user.id
     end
+    
+    user.lastActivityTime = Time.zone.now
+    user.save
+    
     user
   end
 
   def self.updateSession(session)
     user = getSessionUser(session)
-    user.lastActivityTime = Time.zone.now
-    user.save
   end
 
   private
