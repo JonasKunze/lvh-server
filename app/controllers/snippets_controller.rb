@@ -69,12 +69,9 @@ class SnippetsController < ApplicationController
         puts id
         @snippet.rating_marks << RatingMark.find(id)  
       }   
-   
-      if @snippet.update(snippet_params)
-        redirect_to @snippet
-      else
-        render 'edit'
-      end
+    end
+    if @snippet.update(snippet_params)
+      redirect_to @snippet
     else
       render 'edit'
     end
@@ -89,6 +86,6 @@ class SnippetsController < ApplicationController
   
   private
     def snippet_params
-      params[:snippet].permit(:french, :german, :showTime)
+      params[:snippet].permit(:french, :german, :showTime, rating_marks: [])
     end
 end
