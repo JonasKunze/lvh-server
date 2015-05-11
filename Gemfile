@@ -32,7 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :production do 
-  gem 'mysql2'
+  gem 'mysql'
 end
 
 group :development, :test do
