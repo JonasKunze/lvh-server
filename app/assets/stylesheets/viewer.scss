@@ -1,0 +1,168 @@
+/**************
+**** FONTS ****
+**************/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+
+/**************
+**** RESET ****
+**************/
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*****************
+**** DEFAULTS ****
+*****************/
+
+body {
+  font-size: 1em;
+  font-family: 'Inconsolata', monospace;
+  color: #000;
+  text-align: center;
+  padding: 5%;
+  background: white url(../images/paper.png) repeat;
+}
+
+p, h1, h2 {
+  text-align: justify;
+}
+
+h1 {
+  margin: 20px 0 20px 0;
+}
+
+.loading {
+  display: none;
+}
+
+/**************
+**** PARTS ****
+**************/
+
+.part {
+  display: none;
+}
+
+.part:first-of-type {
+  display: block;
+}
+
+h2 {
+  margin: 20px 0 10px 0;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.part p {
+  color: #777;
+  font-size: 1em;
+}
+
+.highlight {
+  color: #000;
+  font-size: 1.3em;
+}
+
+p.todo {
+  margin: 10px 0 10px 0;
+  padding: .5em;
+  font-size: .8em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #ddd;
+  background-color: #000;
+}
+
+/*****************
+**** BUTTONS ****
+*****************/
+
+ul {
+  display: block;
+}
+
+li {
+  list-style: none;
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+li a {
+  color: #000;
+  font-size: 1.2em;
+  background-color: #fff;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow: 3px 3px #000;
+  display: block;
+  font-weight: 700;
+  /*text-transform: uppercase;*/
+}
+
+li a:hover {
+  background-color: #eee;
+}
+
+.btn-warning {
+  color: #fff;
+  background-color: #900;
+}
+
+.btn-warning:hover {
+  background-color: #600;
+}
+
+.btn-timer {
+  border: none;
+  box-shadow: none;
+  font-size: .8em;
+}
+
+.explanation {
+  font-size: .7em;
+  opacity: 0.6;
+}
+
+/**************
+**** IMAGES ****
+**************/
+
+.left {
+  text-align: left;
+  display: block;
+}
+
+.right-float {
+  float: right;
+  width: 40%;
+  margin: 0 0 10px 10px;
+  border: 4px solid #000;
+  display: block;
+  font-size: .7em;
+}
+
+.center {
+  max-width: 100%;
+  text-align: center;
+  margin: 20px 0 20px 0;
+}

@@ -1,0 +1,35 @@
+<div class="part" id="part">
+  TODO: CONTENT HERE
+</div>
+
+<div id="actions">
+  <ul>
+    <li><a href="snipet_01_wait.html">Unbedenklich</a></li>
+    <li><a href="snipet_01_wait.html">Auffällig<br/><span class="explanation">Stichproben</span></a></li>
+    <li><a href="snipet_01_wait.html">Potenzielle Gefahr<br/><span class="explanation">Konstant beobachten</span></a></li>
+    <li><a href="snipet_01_wait.html" class="btn-warning">Terrorgefahr<br/><span class="explanation">Als Gefahr einstufen</span></a></li>
+    <li><a href="snipet_01_wait.html" class="btn-timer">Nächstes Datenpaket in 3, 2, 1 ...</a></li>
+  </ul>
+</div>
+
+<script src="./assets/javascripts/jquery-1.11.2.min.js"></script>
+<script>
+  var lvhServer = '/snippets/json';
+  var repeatPulling = window.setInterval('pullSnippets();', 12000);
+  
+  var pullSnippets = function() { 
+    $.getJSON(lvhServer, {
+      format: "json"
+    }).done(function(data) {
+      updateHTML(data);
+    });
+  }
+  
+  var updateHTML = function(data) {
+    //console.log(data.snippets);
+    firstSnippet = data[Object.keys(data)[0]];
+    $('#part').html(firstSnippet.german);
+  }
+
+  pullSnippets();
+</script>
