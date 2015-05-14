@@ -3,7 +3,7 @@ class Setting < ActiveRecord::Base
 
   def self.getSetting
     if(!Setting.exists?(1))
-      setting = Setting.new(:ID=>0)
+      setting = Setting.new()
       setting.save
     end
 
