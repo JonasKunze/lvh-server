@@ -1,5 +1,6 @@
 # coding: utf-8
 class SnippetsController < ApplicationController
+
   def json
     # Register the session (update activity time)
     UsersController.updateSession(session)
@@ -8,14 +9,8 @@ class SnippetsController < ApplicationController
     setting=Setting.getSetting()
     startTime=setting.startTime
 
-    # Available rating marks
-    ratingMarks = {};
-    RatingMark.all.each{ # All snippets
-      |ratingMark|
-      ratingMarks[ratingMark.id] = ratingMark.title;
-    }
-
-    jsonMap['ratingmarks'] = ratingMarks;
+    # Add available rating marks
+    jsonMap['ratingmarks'] = RatingMarksController.getAvailableMarks
 
     snippets = {}
     Snippet.all.each{ # All snippets
