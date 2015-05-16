@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   get 'stats/json'
   get 'snippets/json'
 
+  resources :stats do
+    resources :stats
+  end
+
   resources :snippets do
     resources :ratings
   end
