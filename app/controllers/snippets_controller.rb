@@ -39,7 +39,7 @@ class SnippetsController < ApplicationController
       #      timeRemaining = -1 if timeRemaining < 0,
         hash["timeRemaining"]=timeRemaining
 
-      map[snippet.id]=hash
+      jsonMap[snippet.id]=hash
 
     }
     jsonMap['snippets'] = snippets;
