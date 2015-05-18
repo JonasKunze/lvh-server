@@ -32,7 +32,7 @@
  <h2>rating marks</h2>
     <% @rating_marks.each do |r| %>
       <%= label_tag r.title  %>
-      <%= check_box_tag "rating_marks[#{r.id}]", r.id  %>
+      <%= check_box_tag "rating_marks[#{r.id}]", r.id, checked=true  %>
       <br />
       <% end %>
   <p>

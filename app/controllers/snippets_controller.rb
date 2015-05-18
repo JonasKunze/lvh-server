@@ -9,7 +9,7 @@ class SnippetsController < ApplicationController
       |snippet|
         hash = {};
       snippet.attributes.each{ |k,v| # All attributes of current snippet
-        if k != "created_at" && k != "updated_at" && k != "showTime"
+        if k != "created_at" && k != "updated_at" && k != "showTime" && k != "id"
           hash[k] = v
         end
       }
@@ -24,8 +24,10 @@ class SnippetsController < ApplicationController
       
       timeRemaining = (startTime - Time.zone.now + snippet.showTime).round
       #      timeRemaining = -1 if timeRemaining < 0,
-      
-      map[timeRemaining]=hash
+
+        hash["timeRemaining"]=timeRemaining
+
+      map[snippet.id]=hash
     }
     render json: map
   end
