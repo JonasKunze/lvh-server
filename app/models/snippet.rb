@@ -5,4 +5,8 @@ class Snippet < ActiveRecord::Base
   def getNumberOfRatings(ratingMarkID)
     return Rating.where({snippet_id: self.id, rating_mark_id: ratingMarkID}).count
   end
+
+  def time_remaining
+    (Setting.getSetting().startTime - Time.zone.now + self.showTime).round
+  end
 end
