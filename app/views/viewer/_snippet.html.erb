@@ -37,8 +37,10 @@
   var timer = function () {
     count = count-1;
     if (count <= 0) {
-       clearInterval(counter);
-       //counter ended, do something here
+      clearInterval(counter);
+        $.ajax({
+          url: "<%= current_snippet_path %>"
+        });
        return;
     }
     $('.countdown').html(count);

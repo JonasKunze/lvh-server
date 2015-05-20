@@ -1,0 +1,27 @@
+<div class="part">
+  <p class="todo">
+    Warten auf neue Datenpakete ...
+  </p>
+  <%= image_tag 'waiting_phone.gif', alt: 'neue Datenpakete werden geladen', class: 'center' %>
+  <ul>
+    <!-- <li><%= link_to 'Überspringen', current_snippet_path, remote: true %></li> -->
+    <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+  </ul>
+</div>
+<!--Icons by Tom Walsh & Paul Tynes-->
+
+<script>
+  var count = <%= @next_snippet.time_remaining %>;
+  var counter = window.setInterval('timer()', 1000);
+  var timer = function () {
+    count = count-1;
+    if (count <= 0) {
+      clearInterval(counter);
+        $.ajax({
+          url: "<%= current_snippet_path %>"
+        });
+       return;
+    }
+    $('.countdown').html(count);
+  }
+</script>
