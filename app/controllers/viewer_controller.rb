@@ -9,13 +9,10 @@ class ViewerController < ApplicationController
 
   def current_snippet    
     @current_snippet = Snippet.current
+    @next_snippet = Snippet.next
   end
 
   private
-
-    def next_snippet
-      
-    end
 
     def update_session
       UsersController.updateSession(session)

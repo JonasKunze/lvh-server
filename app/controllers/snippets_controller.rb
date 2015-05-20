@@ -118,12 +118,9 @@ class SnippetsController < ApplicationController
         puts id
         @snippet.rating_marks << RatingMark.find(id)
       }
-
-      if @snippet.update(snippet_params)
-        redirect_to @snippet
-      else
-        render 'edit'
-      end
+    end
+    if @snippet.update(snippet_params)
+      redirect_to @snippet
     else
       render 'edit'
     end

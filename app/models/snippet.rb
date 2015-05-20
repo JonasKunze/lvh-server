@@ -11,14 +11,13 @@ class Snippet < ActiveRecord::Base
   end
 
   def self.current
-    snippets = Snippet.order('showTime ASC')
-    current_snippet = snippets.last
-    snippets.each{ |snippet| current_snippet = snippet if snippet.time_remaining < current_snippet.time_remaining  }
-    current_snippet
+    snippets = Snippet.order('showTime ASC').to_a.delete_if{ |snippet| snippet.time_remaining >= 0  }
+    snippets.last
   end
 
   def self.next
-    
+    snippets = Snippet.order('showTime ASC').to_a.delete_if{ |snippet| snippet.time_remaining < 0  }
+    snippets.first
   end
 
 end
