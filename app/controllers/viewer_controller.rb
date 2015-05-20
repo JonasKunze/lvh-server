@@ -5,8 +5,10 @@ class ViewerController < ApplicationController
   before_action :update_session
 
   def index
-    @snippets = Snippet.order('showTime ASC')
-    @rating_marks = RatingMarksController.getAvailableMarks    
+  end
+
+  def current_snippet    
+    @current_snippet = Snippet.current
   end
 
   private

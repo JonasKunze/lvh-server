@@ -9,4 +9,16 @@ class Snippet < ActiveRecord::Base
   def time_remaining
     (Setting.getSetting().startTime - Time.zone.now + self.showTime).round
   end
+
+  def self.current
+    snippets = Snippet.order('showTime ASC')
+    current_snippet = snippets.last
+    snippets.each{ |snippet| current_snippet = snippet if snippet.time_remaining < current_snippet.time_remaining  }
+    current_snippet
+  end
+
+  def self.next
+    
+  end
+
 end

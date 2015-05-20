@@ -1,5 +1,5 @@
 <div class="part" id="part">
-  ...
+  <%= @current_snippet.french.html_safe %>
 </div>
 
 <div id="translate_actions">  
@@ -19,33 +19,15 @@
   </ul>
 </div>
 
-
-
 <script>
-  var lvhServer = '/snippets/json2';
-  var repeatPulling = window.setInterval('pullSnippets();', 12000);
-  var currentSnippet;
-
-  var pullSnippets = function() { 
-    $.getJSON(lvhServer, {
-      format: "json"
-    }).done(function(data) {
-      updateHTML(data);
-    });
+  var repeatPulling = window.setInterval('nextSnippet();', 12000);
+  var nextSnippet = function() { 
+    console.log('do something...');
   }
-  
-  var updateHTML = function(data) {
-    currentSnippet = data.currentSnippet;
-    $('#part').html(currentSnippet.french);
-  }
-
-  pullSnippets();
-
-
 
   $('#do_translate').on('click', function(e){
     e.preventDefault();
-    $('#part').html(currentSnippet.german)
+    $('#part').html('<%= j @current_snippet.german %>')
     $('#translate_actions').hide();
     $('#actions').show();
   });
