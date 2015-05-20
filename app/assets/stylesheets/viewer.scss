@@ -34,7 +34,7 @@ body {
   color: #000;
   text-align: center;
   padding: 5%;
-  background: white url(../images/paper.png) repeat;
+  background: image-url('paper.png') 0 0 white repeat;
 }
 
 p, h1, h2 {

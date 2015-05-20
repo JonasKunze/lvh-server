@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'stats/json'
   get 'snippets/json'
+  get 'snippets/json2'
 
   resources :stats do
     resources :stats
