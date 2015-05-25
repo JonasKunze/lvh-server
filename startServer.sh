@@ -1,2 +1,4 @@
 #!/bin/bash
-bin/rails s -p3000 -b* -e development
+service firewalld stop
+source /home/kunzejo/.rvm/scripts/rvm
+bin/rails s -p80 -b* -e development

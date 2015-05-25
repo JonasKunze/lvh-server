@@ -1,0 +1,16 @@
+$TTL 86400
+@   IN  SOA     ns1.min-auf.de. root.min-auf.de. (
+        2013042201  ;Serial
+        3600        ;Refresh
+        1800        ;Retry
+        604800      ;Expire
+        86400       ;Minimum TTL
+)
+; Specify our two nameservers
+		IN	NS		ns.min-auf.de.
+; Resolve nameserver hostnames to IP, replace with your two droplet IP addresses.
+ns		IN	A		10.42.0.1
+
+; Define hostname -> IP pairs which you wish to resolve
+@		IN	A		10.42.0.1
+*		IN	A		10.42.0.1
