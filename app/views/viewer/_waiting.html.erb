@@ -26,7 +26,7 @@
   }
 
   // Reload page partial every 10 seconds
-  var checkTimerInterval = window.setInterval('checkTimer()', 5000); 
+  var checkTimerInterval = window.setInterval('checkTimer()', 10000); 
   var checkTimer = function() {
     $.getJSON( "/snippets/<%= @next_snippet.id %>/time_remaining.json", function(time){
       count = time;
