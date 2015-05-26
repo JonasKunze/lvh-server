@@ -10,6 +10,7 @@ class ViewerController < ApplicationController
   def current_snippet    
     @current_snippet = Snippet.current
     @next_snippet = Snippet.next
+    @rating_marks = RatingMark.all
   end
 
   private

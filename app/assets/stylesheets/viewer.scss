@@ -123,12 +123,12 @@ li a:hover {
   background-color: #eee;
 }
 
-.btn-warning {
+.btn-warning, #actions ul li:nth-child(4) a {
   color: #fff;
   background-color: #900;
 }
 
-.btn-warning:hover {
+.btn-warning:hover, #actions ul li:nth-child(4) a:hover {
   background-color: #600;
 }
 

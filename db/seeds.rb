@@ -9,9 +9,9 @@
 
 if RatingMark.count < 4
   rating_marks = RatingMark.create!([
-    {title: "unbedenklich" },
-    {title: "auffällig" },
-    {title: "potentielle gefahr" },
-    {title: "terrorgefahr" }
+    {title: "Unbedenklich" },
+    {title: "Auffällig", explanation: "Stichproben" },
+    {title: "Potentielle Gefahr", explanation: "Konstant beobachten" },
+    {title: "Terrorgefahr", explanation: "Als Gefahr einstufen" }
   ])
 end

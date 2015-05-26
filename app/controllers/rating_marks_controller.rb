@@ -38,6 +38,6 @@ class RatingMarksController < ApplicationController
  
   private
     def rating_mark_params
-      params.require(:rating_mark).permit(:title)
+      params.require(:rating_mark).permit(:title, :explanation)
     end
 end

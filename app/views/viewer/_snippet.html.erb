@@ -11,10 +11,13 @@
 
 <div id="actions">
   <ul>
-    <li><a href="snipet_01_wait.html">Unbedenklich</a></li>
-    <li><a href="snipet_01_wait.html">Auffällig<br/><span class="explanation">Stichproben</span></a></li>
-    <li><a href="snipet_01_wait.html">Potenzielle Gefahr<br/><span class="explanation">Konstant beobachten</span></a></li>
-    <li><a href="snipet_01_wait.html" class="btn-warning">Terrorgefahr<br/><span class="explanation">Als Gefahr einstufen</span></a></li>
+    <% @rating_marks.each do |rating_mark| %>
+      <li>
+        <%= link_to snippet_ratings_path(@current_snippet.id, "rating[rating_mark_id]": rating_mark.id), method: :post, remote:true do %>
+          <%= "#{rating_mark.title}" %><%= content_tag(:span, "<br>#{rating_mark.explanation}".html_safe, class: 'explanation') if rating_mark.explanation %>
+        <% end %>
+      </li>
+    <% end %>
     <li><a href="snipet_01_wait.html" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
   </ul>
 </div>
