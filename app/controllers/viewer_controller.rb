@@ -7,8 +7,11 @@ class ViewerController < ApplicationController
   def index
   end
 
-  def current_snippet    
+  def current_snippet
     @current_snippet = Snippet.current
+    if @user.has_voted_for_snippet?(@current_snippet)
+      @current_snippet = nil
+    end
     @next_snippet = Snippet.next
     @rating_marks = RatingMark.all
   end
@@ -16,6 +19,6 @@ class ViewerController < ApplicationController
   private
 
     def update_session
-      UsersController.updateSession(session)
+      @user = UsersController.updateSession(session)
     end
 end
