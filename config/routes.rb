@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :snippets do
+    member { get 'time_remaining' }
     resources :ratings
   end
 

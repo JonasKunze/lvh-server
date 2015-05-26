@@ -87,6 +87,13 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.find(params[:id])
   end
 
+  def time_remaining
+    @snippet = Snippet.find(params[:id])
+    respond_to do |format| 
+      format.json { render json: @snippet.time_remaining  }
+    end
+  end
+
   def new
     @snippet = Snippet.new
     @rating_marks = RatingMark.all

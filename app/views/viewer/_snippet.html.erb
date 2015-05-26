@@ -5,7 +5,9 @@
 <div id="translate_actions">  
   <ul>
     <li><a href="#" id="do_translate">Übersetzen</a></li>
-    <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    <% if @next_snippet %>
+      <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    <% end %>
     </ul>
 </div>
 
@@ -18,15 +20,13 @@
         <% end %>
       </li>
     <% end %>
-    <li><a href="snipet_01_wait.html" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    <% if @next_snippet %>
+      <li><a href="snipet_01_wait.html" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    <% end %>
   </ul>
 </div>
 
 <script>
-  var repeatPulling = window.setInterval('nextSnippet();', 12000);
-  var nextSnippet = function() { 
-    console.log('do something...');
-  }
 
   $('#do_translate').on('click', function(e){
     e.preventDefault();
@@ -35,18 +35,30 @@
     $('#actions').show();
   });
 
-  var count = <%= @next_snippet.time_remaining %>;
-  var counter = window.setInterval('timer()', 1000);
-  var timer = function () {
-    count = count-1;
-    if (count <= 0) {
-      clearInterval(counter);
+  <% if @next_snippet %>
+
+    var count = <%= @next_snippet.time_remaining %>;
+    var counter = window.setInterval('timer()', 1000);
+    var timer = function () {
+      count = count-1;
+      if (count <= 0) {
+        clearInterval(counter);
         $.ajax({
           url: "<%= current_snippet_path %>"
         });
        return;
+      }
+      $('.countdown').html(count);
     }
-    $('.countdown').html(count);
-  }
+
+
+    // Reload page partial every 10 seconds
+    var checkTimerInterval = window.setInterval('checkTimer()', 5000); 
+    var checkTimer = function() {
+      $.getJSON( "/snippets/<%= @next_snippet.id %>/time_remaining.json", function(time){
+        count = time;
+      });
+    }
+  <% end %>
 
 </script>
