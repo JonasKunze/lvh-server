@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+if RatingMark.count < 4
+  rating_marks = RatingMark.create!([
+    {title: "unbedenklich" },
+    {title: "auffällig" },
+    {title: "potentielle gefahr" },
+    {title: "terrorgefahr" }
+  ])
+end
