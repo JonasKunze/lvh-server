@@ -20,17 +20,17 @@ class RatingsController < ApplicationController
 
   def create
     @snippet = Snippet.find(params[:snippet_id])
-    #@rating = Rating.take({:snippet_id => @snippet.id, :user_id => @user..id }) rescue nil
-    @rating = Rating.where({:snippet_id => @snippet.id, :user_id => @user..id }).take
+    #@rating = Rating.take({:snippet_id => @snippet.id, :user_id => @user.id }) rescue nil
+    @rating = Rating.where({:snippet_id => @snippet.id, :user_id => @user.id }).take
     puts "Snippet:"
     puts @snippet.inspect
     puts "Rating:"
     puts @rating.inspect
     puts "User ID:" 
-    puts @user..id
+    puts @user.id
     puts "!!!!!!!!!!!!!!!!!!!!!!!!!!"
  
-    dataHash = rating_params.merge({:user_id => @user..id})
+    dataHash = rating_params.merge({:user_id => @user.id})
     sucess = false
     if @rating
       if @rating.update(dataHash)
