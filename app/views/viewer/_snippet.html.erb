@@ -15,7 +15,7 @@
   <ul>
     <% @rating_marks.each do |rating_mark| %>
       <li class="rating">
-        <%= link_to snippet_ratings_path(@current_snippet.id, 'rating[rating_mark_id]' => rating_mark.id), method: :post, remote:true do %>
+        <%= link_to snippet_ratings_path(@current_snippet.id, 'rating[rating_mark_id]' => rating_mark.id), method: :post, remote: true do %>
           <%= "#{rating_mark.title}" %><%= content_tag(:span, "<br>#{rating_mark.explanation}".html_safe, class: 'explanation') if rating_mark.explanation %>
         <% end %>
       </li>
