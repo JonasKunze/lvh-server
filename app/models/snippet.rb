@@ -7,7 +7,8 @@ class Snippet < ActiveRecord::Base
   end
 
   def time_remaining
-    (Setting.getSetting().startTime - Time.zone.now + self.showTime).round
+    show_time = self.showTime.nil? ? 0 : self.showTime
+    (Setting.getSetting().startTime - Time.zone.now + show_time).round
   end
 
   def self.current
