@@ -5,11 +5,14 @@
   <%= image_tag 'waiting_phone.gif', alt: 'neue Datenpakete werden geladen', class: 'center' %>
   <ul>
     <!-- <li><%= link_to 'Überspringen', current_snippet_path, remote: true %></li> -->
+    <% if @next_snippet %>
     <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    <% end %>
   </ul>
 </div>
 <!--Icons by Tom Walsh & Paul Tynes-->
 
+<% if @next_snippet %>
 <script>
   var count = <%= @next_snippet.time_remaining %>;
   var counter = window.setInterval('timer()', 1000);
@@ -33,3 +36,4 @@
     });
   }
 </script>
+<% end %>

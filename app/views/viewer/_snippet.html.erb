@@ -33,7 +33,8 @@
 
 
 <script>
-
+  clearInterval(checkTimerInterval);
+  
   $('#do_translate').on('click', function(e){
     e.preventDefault();
     $('#part').html('<%= j @current_snippet.german.html_safe %>')
