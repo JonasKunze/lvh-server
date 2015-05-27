@@ -15,8 +15,8 @@
   <% @snippets.each do |snippet| %>
     <tr>
       <td><%= snippet.id %></td>
-      <td><%= snippet.french %></td>
-      <td><%= snippet.german %></td>
+      <td><%= truncate snippet.french, length: 20 %></td>
+      <td><%= truncate snippet.german, length: 20 %></td>
       <td><%= snippet.showTime %></td>
       <td><%= snippet.time_remaining %></td>
       <td><%= link_to 'Show', snippet_path(snippet) %></td>
