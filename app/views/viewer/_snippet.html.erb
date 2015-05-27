@@ -26,6 +26,12 @@
   </ul>
 </div>
 
+<% if Rails.env.development? %>
+  <%= link_to 'prev', prev_snippet_path(@current_snippet.id) %> |
+  <%= link_to 'next', next_snippet_path(@current_snippet.id) %>
+<% end %>
+
+
 <script>
 
   $('#do_translate').on('click', function(e){
