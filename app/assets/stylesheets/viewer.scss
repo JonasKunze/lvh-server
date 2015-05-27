@@ -34,7 +34,7 @@ body {
   color: #000;
   text-align: center;
   padding: 5%;
-  background: white url(../images/paper.png) repeat;
+  background: image-url('paper.png') 0 0 white repeat;
 }
 
 p, h1, h2 {
@@ -79,6 +79,7 @@ h2 {
 }
 
 p.todo {
+  clear: both;
   margin: 10px 0 10px 0;
   padding: .5em;
   font-size: .8em;
@@ -123,12 +124,12 @@ li a:hover {
   background-color: #eee;
 }
 
-.btn-warning {
+.btn-warning, #actions ul li:nth-child(4) a {
   color: #fff;
   background-color: #900;
 }
 
-.btn-warning:hover {
+.btn-warning:hover, #actions ul li:nth-child(4) a:hover {
   background-color: #600;
 }
 
@@ -141,6 +142,10 @@ li a:hover {
 .explanation {
   font-size: .7em;
   opacity: 0.6;
+}
+
+#actions {
+  display: none;
 }
 
 /**************

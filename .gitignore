@@ -1,3 +1,6 @@
+.idea/
+Gemfile.lock
+
 *~
 *.rbc
 capybara-*.html

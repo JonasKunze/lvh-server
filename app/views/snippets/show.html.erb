@@ -1,6 +1,9 @@
 <h1>Showing Snippet <%= @snippet.id %></h1>
 <%= render 'welcome/menu' %>
 
+<%= link_to 'New snippet', new_snippet_path %>
+<br/>
+
 <p>
   <strong>French:</strong>
   <%= @snippet.french %>

@@ -1,0 +1,5 @@
+<% if @current_snippet %>
+	$('#content').html('<%= j render "snippet" %>');
+<% else %>
+	$('#content').html('<%= j render "waiting" %>');
+<% end %>

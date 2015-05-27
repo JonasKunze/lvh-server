@@ -24,9 +24,20 @@ class RatingMarksController < ApplicationController
       render 'new'
     end
   end
+
+ def self.getAvailableMarks
+   # Available rating marks
+   ratingMarks = {};
+   RatingMark.all.each{ # All snippets
+       |ratingMark|
+     ratingMarks[ratingMark.id] = ratingMark.title;
+   }
+
+   return ratingMarks
+ end
  
   private
     def rating_mark_params
-      params.require(:rating_mark).permit(:title)
+      params.require(:rating_mark).permit(:title, :explanation)
     end
 end

@@ -1,0 +1,70 @@
+<div class="part" id="part">
+  <%= @current_snippet.french.html_safe %>
+</div>
+
+<div id="translate_actions">  
+  <ul>
+    <li><a href="#" id="do_translate">Übersetzen</a></li>
+    <% if @next_snippet %>
+      <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    <% end %>
+    </ul>
+</div>
+
+<div id="actions">
+  <ul>
+    <% @rating_marks.each do |rating_mark| %>
+      <li class="rating">
+        <%= link_to snippet_ratings_path(@current_snippet.id, "rating[rating_mark_id]": rating_mark.id), method: :post, remote:true do %>
+          <%= "#{rating_mark.title}" %><%= content_tag(:span, "<br>#{rating_mark.explanation}".html_safe, class: 'explanation') if rating_mark.explanation %>
+        <% end %>
+      </li>
+    <% end %>
+    <% if @next_snippet %>
+      <li><a href="snipet_01_wait.html" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    <% end %>
+  </ul>
+</div>
+
+<% if Rails.env.development? %>
+  <%= link_to 'prev', prev_snippet_path(@current_snippet.id) %> |
+  <%= link_to 'next', next_snippet_path(@current_snippet.id) %>
+<% end %>
+
+
+<script>
+
+  $('#do_translate').on('click', function(e){
+    e.preventDefault();
+    $('#part').html('<%= j @current_snippet.german.html_safe %>')
+    $('#translate_actions').hide();
+    $('#actions').show();
+  });
+
+  <% if @next_snippet %>
+
+    var count = <%= @next_snippet.time_remaining %>;
+    var counter = window.setInterval('timer()', 1000);
+    var timer = function () {
+      count = count-1;
+      if (count <= 0) {
+        clearInterval(counter);
+        $.ajax({
+          url: "<%= current_snippet_path %>"
+        });
+       return;
+      }
+      $('.countdown').html(count);
+    }
+
+
+    // Reload page partial every 10 seconds
+    var checkTimerInterval = window.setInterval('checkTimer()', 10000); 
+    var checkTimer = function() {
+      $.getJSON( "/snippets/<%= @next_snippet.id %>/time_remaining.json", function(time){
+        count = time;
+      });
+    }
+  <% end %>
+
+</script>

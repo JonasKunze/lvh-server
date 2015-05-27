@@ -2,8 +2,14 @@ Rails.application.routes.draw do
 
   get 'stats/json'
   get 'snippets/json'
+  get 'snippets/json2'
+
+  resources :stats do
+    resources :stats
+  end
 
   resources :snippets do
+    member { get 'time_remaining' }
     resources :ratings
   end
 
@@ -17,6 +23,9 @@ Rails.application.routes.draw do
   resources :settings
   get 'welcome/index'
   get 'viewer/index'
+  get 'viewer/current_snippet', as: 'current_snippet'
+  get 'viewer/next_snippet/:snippet_id' => 'viewer#next_snippet', as: 'next_snippet'
+  get 'viewer/prev_snippet/:snippet_id' => 'viewer#prev_snippet', as: 'prev_snippet'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
