@@ -6,7 +6,9 @@
   <ul>
     <!-- <li><%= link_to 'Überspringen', current_snippet_path, remote: true %></li> -->
     <% if @next_snippet %>
-    <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+      <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    <% else %>
+      <li><a href="/stats">Statistiken</a></li>
     <% end %>
   </ul>
 </div>
@@ -14,6 +16,10 @@
 
 <% if @next_snippet %>
 <script>
+
+  window.clearInterval(counter);
+  window.clearInterval(checkTimerInterval);
+
   var count = <%= @next_snippet.time_remaining %>;
   var counter = window.setInterval('timer()', 1000);
   var timer = function () {
