@@ -39,6 +39,7 @@
     $('#part').html('<%= j @current_snippet.german.html_safe %>');
     $('#translate_actions').hide();
     $('#actions').show();
+    $(window).scrollTop(0);
   });
 
   <% if @next_snippet %>
