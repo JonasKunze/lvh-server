@@ -1,1 +1,6 @@
-$('#actions li.rating').hide();
+//$('#actions li.rating').hide();
+<% if @current_snippet %>
+	$('#content').html('<%= j render "/viewer/snippet" %>');
+<% else %>
+	$('#content').html('<%= j render "/viewer/waiting" %>');
+<% end %>

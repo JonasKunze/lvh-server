@@ -33,11 +33,13 @@
 
 
 <script>
-  clearInterval(checkTimerInterval);
+  //if (typeof checkTimerInterval != 'undefinded') {
+    window.clearInterval(checkTimerInterval);
+  //}
   
   $('#do_translate').on('click', function(e){
     e.preventDefault();
-    $('#part').html('<%= j @current_snippet.german.html_safe %>')
+    $('#part').html('<%= j @current_snippet.german.html_safe %>');
     $('#translate_actions').hide();
     $('#actions').show();
   });

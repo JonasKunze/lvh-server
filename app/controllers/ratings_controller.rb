@@ -51,7 +51,14 @@ class RatingsController < ApplicationController
           render 'new'
         end        
       }
-      format.js { }
+      format.js {
+        @current_snippet = Snippet.current
+        if @user.has_voted_for_snippet?(@current_snippet)
+          @current_snippet = nil
+        end
+        @next_snippet = Snippet.next
+        @rating_marks = RatingMark.all
+      }
     end
   end
 
