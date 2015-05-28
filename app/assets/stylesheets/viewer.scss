@@ -153,15 +153,16 @@ li a:hover {
 **************/
 
 .left {
-  text-align: left;
+  text-align: center;
   display: block;
+  margin: 10px;
 }
 
 .right-float {
   float: right;
   width: 40%;
   margin: 0 0 10px 10px;
-  border: 4px solid #000;
+  border-bottom: 4px solid #000;
   display: block;
   font-size: .7em;
 }
