@@ -46,9 +46,9 @@ function onLoad() {
                 labels : labels,
                 datasets : [
                     {
-                        fillColor : "rgba(220,220,220,0.5)",
-                        strokeColor : "rgba(220,220,220,0.8)",
-                        highlightFill: "rgba(220,220,220,0.75)",
+                        fillColor : "rgba(0,0,0,1.0)",
+                        strokeColor : "rgba(0,0,0,0)",
+                        highlightFill: "rgba(0,0,0,1.0)",
                         highlightStroke: "rgba(220,220,220,1)",
                         data : data
                     }
@@ -61,6 +61,11 @@ function onLoad() {
                 responsive : true
             });
 
-            setInterval(updateChart, 1000);
+            // recolor bar 4
+            chart.datasets[0].bars[3].fillColor = "rgba(212,0,0,1.0)"; //bar 4
+            chart.update();
+
+            updateChart();
+            setInterval(updateChart, 5000);
         });
 }
