@@ -1,45 +1,63 @@
-<div class="part">
-  <p class="todo">
-    Warten auf neue Datenpakete ...
-  </p>
-  <%= image_tag 'waiting_phone.gif', alt: 'neue Datenpakete werden geladen', class: 'center' %>
-  <ul>
-    <!-- <li><%= link_to 'Überspringen', current_snippet_path, remote: true %></li> -->
-    <% if @next_snippet %>
-      <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
-    <% else %>
-      <li><a href="/stats">Statistiken</a></li>
-    <% end %>
-  </ul>
-</div>
-<!--Icons by Tom Walsh & Paul Tynes-->
-
 <% if @next_snippet %>
-<script>
+  <div class="part">
 
-  window.clearInterval(counter);
-  window.clearInterval(checkTimerInterval);
+    <p class="todo">
+      Warten auf neue Datenpakete ...
+    </p>
+    <%= image_tag 'waiting_phone.gif', alt: 'neue Datenpakete werden geladen', class: 'center' %>
+    <ul>
+      <!-- <li><%= link_to 'Überspringen', current_snippet_path, remote: true %></li> -->
+      <li><a href="#" class="btn-timer">Nächstes Datenpaket in <span class="countdown"></span></a></li>
+    </ul>
+  </div>
+  <!--Icons by Tom Walsh & Paul Tynes-->
 
-  var count = <%= @next_snippet.time_remaining %>;
-  var counter = window.setInterval('timer()', 1000);
-  var timer = function () {
-    count = count-1;
-    if (count <= 0) {
-      clearInterval(counter);
-        $.ajax({
-          url: "<%= current_snippet_path %>"
-        });
-       return;
+  <script>
+
+    window.clearInterval(counter);
+    window.clearInterval(checkTimerInterval);
+
+    var count = <%= @next_snippet.time_remaining %>;
+    var counter = window.setInterval('timer()', 1000);
+    var timer = function () {
+      count = count-1;
+      if (count <= 0) {
+        clearInterval(counter);
+          $.ajax({
+            url: "<%= current_snippet_path %>"
+          });
+         return;
+      }
+      $('.countdown').html(count);
     }
-    $('.countdown').html(count);
-  }
 
-  // Reload page partial every 10 seconds
-  var checkTimerInterval = window.setInterval('checkTimer()', 10000); 
-  var checkTimer = function() {
-    $.getJSON( "/snippets/<%= @next_snippet.id %>/time_remaining.json", function(time){
-      count = time;
-    });
-  }
-</script>
+    // Reload page partial every 10 seconds
+    var checkTimerInterval = window.setInterval('checkTimer()', 10000); 
+    var checkTimer = function() {
+      $.getJSON( "/snippets/<%= @next_snippet.id %>/time_remaining.json", function(time){
+        count = time;
+      });
+    }
+  </script>
+<% else %>
+  <div id="intro">
+    <p class="todo">
+      Übertragung abgeschlossen // Auswertung erfolgt
+    </p>
+    <h1>Vielen Dank, Agent.</h1>
+    <p>
+      <span class="highlight">Ihre Bewertung wird mit denen Ihrer Kollegen abgeglichen und ausgewertet. Resultierende Gegenmaßnamen erfolgen automatisiert.</span>
+    </p>
+    <br>
+    <p>
+      <span class="highlight">Melden Sie sich hiermit ab und vergessen Sie nicht: auch Sie werden für Ihre eigene Sicherheit überwacht.</span>
+    </p>
+    <img src="/assets/intro_logo.png" alt="Logo" class="center"/>
+    <p class="todo">
+      System abmelden
+    </p>
+    <ul>
+      <li><a href="/stats">Überwachung beenden</a></li>
+    </ul>
+  </div>
 <% end %>
