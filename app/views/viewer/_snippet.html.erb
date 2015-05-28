@@ -33,11 +33,7 @@
 
 
 <script>
-  //if (typeof checkTimerInterval != 'undefinded') {
-    window.clearInterval(counter);
-    window.clearInterval(checkTimerInterval);
-  //}
-  
+
   $('#do_translate').on('click', function(e){
     e.preventDefault();
     $('#part').html('<%= j @current_snippet.german.html_safe %>');
@@ -46,7 +42,13 @@
   });
 
   <% if @next_snippet %>
-
+    // if (checkTimerInterval && (typeof checkTimerInterval != 'undefinded')) {
+    //   //window.clearInterval(checkTimerInterval);
+    // }
+    //window.clearInterval(counter);
+    window.clearInterval(counter);
+    window.clearInterval(checkTimerInterval);
+    
     var count = <%= @next_snippet.time_remaining %>;
     var counter = window.setInterval('timer()', 1000);
     var timer = function () {
