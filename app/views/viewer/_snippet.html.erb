@@ -26,7 +26,7 @@
   </ul>
 </div>
 
-<% if Rails.env.development? %>
+<% if Rails.env.development? && false %>
   <%= link_to 'prev', prev_snippet_path(@current_snippet.id) %> |
   <%= link_to 'next', next_snippet_path(@current_snippet.id) %>
 <% end %>

@@ -1,6 +1,9 @@
 # coding: utf-8
 class SnippetsController < ApplicationController
 
+  before_action :authenticate, except: [:json, :json2, :time_remaining]
+
+
   def json
     # Register the session (update activity time)
     UsersController.updateSession(session)

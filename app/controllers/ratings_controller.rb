@@ -1,6 +1,7 @@
 class RatingsController < ApplicationController
 
   before_action :get_user, only: [:create]
+  before_action :authenticate, except: [:create, :update]
 
   def index
     @ratings = Rating.all

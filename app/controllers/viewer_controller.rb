@@ -3,6 +3,7 @@ class ViewerController < ApplicationController
   layout 'viewer'
 
   before_action :update_session
+  before_action :authenticate, only: [:prev_snippet, :next_snippet]
 
   def index
   end

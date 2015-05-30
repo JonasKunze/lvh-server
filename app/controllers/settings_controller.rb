@@ -1,4 +1,7 @@
 class SettingsController < ApplicationController
+
+  before_action :authenticate
+
   def index
     @setting=Setting.getSetting()
   end

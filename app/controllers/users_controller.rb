@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :authenticate, only: [:index, :show, :destroy]
+
   def index
     @users = User.all
   end

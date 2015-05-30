@@ -1,4 +1,7 @@
 class RatingMarksController < ApplicationController
+
+  before_action :authenticate, only: [:index, :show, :new, :edit, :create]
+
  def index
     @rating_marks = RatingMark.all
   end
