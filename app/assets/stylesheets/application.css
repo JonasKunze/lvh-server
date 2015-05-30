@@ -12,3 +12,32 @@
  *
  *= require_self
  */
+
+html {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	-webkit-box-sizing: inherit;
+	-moz-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#cwrapper {
+	height: 100vh;
+}
+
+canvas {
+	height: 90vmin;
+	width: 90%;
+	margin: 0 auto;
+	display: block;
+}
